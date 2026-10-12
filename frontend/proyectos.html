@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Proyectos - ERP</title>
+    <!-- Reutilizamos tu mismo archivo de estilos -->
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="layout-app">
+
+    <!-- BARRA LATERAL (SIDEBAR) -->
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <h2>📁 Proyectos</h2>
+        </div>
+        <nav class="sidebar-nav">
+            <!-- Estos botones llaman a la función de JavaScript de abajo -->
+            <button onclick="cambiarSeccion('dashboard')" class="nav-btn">📊 Dashboard</button>
+            <button onclick="cambiarSeccion('lista-proyectos')" class="nav-btn">📋 Ver Proyectos</button>
+            
+            <hr class="divisor">
+            <a href="index.html" class="nav-btn volver">🏠 Volver al Inicio</a>
+        </nav>
+    </aside>
+
+    <!-- CONTENIDO PRINCIPAL (DERECHA) -->
+    <main class="main-content">
+        
+        <!-- SECCIÓN 1: DASHBOARD (Se muestra por defecto) -->
+        <section id="dashboard" class="seccion-activa">
+            <h2>Resumen de Operaciones</h2>
+            <p>Estadísticas generales de tus instalaciones.</p>
+            
+            <div class="grid-stats">
+                <div class="stat-card">
+                    <h3>12</h3>
+                    <p>Proyectos Activos</p>
+                </div>
+                <div class="stat-card">
+                    <h3>3</h3>
+                    <p>Por Iniciar</p>
+                </div>
+                <div class="stat-card">
+                    <h3>$45,000</h3>
+                    <p>Ingresos del Mes</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN 2: LISTA DE PROYECTOS Y TABLA (Oculta al inicio) -->
+        <section id="lista-proyectos" class="seccion-oculta">
+            <h2>Directorio de Proyectos</h2>
+            
+            <div class="acciones-tabla">
+                <input type="text" id="buscador" placeholder="Buscar proyecto o cliente..." class="input-busqueda">
+                <button class="btn-primario">+ Nuevo Proyecto</button>
+            </div>
+
+            <!-- Aquí está tu tabla -->
+            <table class="tabla-datos">
+                <thead>
+                    <tr>
+                        <th>Nombre del Proyecto</th>
+                        <th>Cliente</th>
+                        <th>Estado</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Instalación 8 Cámaras PTZ</td>
+                        <td>Ferretería El Tornillo</td>
+                        <td><span class="badge en-proceso">En Proceso</span></td>
+                        <td><button class="btn-secundario">Ver / Editar</button></td>
+                    </tr>
+                    <tr>
+                        <td>Mantenimiento DVR</td>
+                        <td>Corporativo G&G</td>
+                        <td><span class="badge pendiente">Pendiente</span></td>
+                        <td><button class="btn-secundario">Ver / Editar</button></td>
+                    </tr>
+                    <tr>
+                        <td>Cableado Estructurado</td>
+                        <td>Colegio San Miguel</td>
+                        <td><span class="badge completado">Completado</span></td>
+                        <td><button class="btn-secundario">Ver / Editar</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+    </main>
+
+    <!-- MAGIA DE JAVASCRIPT -->
+    <script>
+        // Esta función recibe el ID de la sección que queremos mostrar
+        function cambiarSeccion(idSeccion) {
+            // 1. Ocultamos ambas secciones
+            document.getElementById('dashboard').className = 'seccion-oculta';
+            document.getElementById('lista-proyectos').className = 'seccion-oculta';
+            
+            // 2. Mostramos solo la que el usuario pidió
+            document.getElementById(idSeccion).className = 'seccion-activa';
+        }
+    </script>
+</body>
+</html>
